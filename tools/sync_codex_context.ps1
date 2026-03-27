@@ -49,7 +49,9 @@ $managedFiles = @(
 
 $managedDirectories = @(
     "docs",
-    "rules"
+    "rules",
+    "contexts\memory",
+    "periodic_jobs\ai_heartbeat\docs"
 )
 
 if (-not (Test-Path -LiteralPath $TargetDir)) {

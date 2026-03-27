@@ -54,13 +54,29 @@
 - **操作**: 采用 **Append-only** 模式。在文件末尾追加最新的日期 Header，并将当日观测点写入。
 - **日期格式**: 使用 `Date: YYYY-MM-DD`（Date 首字母大写，冒号后空格，ISO 日期）。
 - **格式**: 严格遵循上述红黄绿交通灯 Emoji 格式，每条记录单行化。
+- **额外要求**: 如果某条记录明显具备复用价值，应显式写出 `Pattern candidate`、`Preference candidate` 或 `Upgrade target`。
 
 ### 4.2 反思与晋升 (L2 Reflector)
 - **核心目标**: 实现从“短期观测”到“长期规则”的进化。
 - **操作文件**:
-  1. **规则层 (L3)**: 直接根据最新观测到的有效规律、语言风格变化、以及长效约束，修改或更新 `rules/` 下的核心规则文件 (`SOUL.md`, `USER.md`, `COMMUNICATION.md`, `WORKSPACE.md`)。
-  2. **记忆层 (L1/L2)**: 重写 `contexts/memory/OBSERVATIONS.md`。执行垃圾回收，删除已被固化进 rules 的内容以及过期的 🟢 记录。
-- **职责**: 确保 `rules/` 始终代表系统的最新“进化状态”。
+  1. **周反思层 (L2)**: 使用 `contexts/memory/reflector_weekly_template.md` 识别重复模式、风险和默认动作。
+  2. **偏好层 (L2.5)**: 将已经足够稳定、但还不需要全局被动加载的内容写入 `contexts/memory/PREFERENCE_REGISTRY.md`。
+  3. **规则层 (L3)**: 只有真正成为跨 session 默认约束的内容，才修改 `rules/`、`axioms/` 或 `skills/`。
+  4. **记忆层清理**: 清理过期 🟢 记录，但保留关键决策痕迹和可回溯证据。
+- **职责**: 确保记忆沿着 `OBSERVATIONS -> weekly reflection -> preference registry -> rules/axioms/skills` 的方向逐步进化。
+
+### 4.3 长期偏好注册表 (L2.5 Preference Registry)
+- **目标文件**: `contexts/memory/PREFERENCE_REGISTRY.md`
+- **用途**: 存放稳定但仍可调整的研究偏好、写作偏好、工作流偏好。
+- **条目要求**:
+  - 必须写清默认动作
+  - 必须写清适用边界
+  - 必须给出证据来源
+  - 必须标注 `candidate | stable | retired`
+
+### 4.4 晋升协议 (Promotion Protocol)
+- **目标文件**: `contexts/memory/MEMORY_PROMOTION_PROTOCOL.md`
+- **用途**: 统一判断一条内容该停留在观察、升为偏好，还是直接进入 rules / axioms / skills。
 
 ## 5. 执行角色隔离 (Role Isolation)
 - **Observer (L1)** 和 **Reflector (L2)** 是独立的任务阶段。

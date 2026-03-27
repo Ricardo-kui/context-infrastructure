@@ -14,6 +14,9 @@
 - Error/Failure (if any):
 - Revision After Error:
 - Reusable Pattern Candidate:
+- Preference Candidate:
+- Upgrade Target: none | weekly | preference | rule | axiom | skill
+- Confidence: low | medium | high
 - Open Questions:
 
 ---
@@ -26,6 +29,7 @@
 - `#review` 审稿与回应
 - `#workflow` 协作流程
 - `#bias` 个人偏好与权衡
+- `#promotion` 候选晋升条目
 
 ### Date: 2026-03-24
 - Project: shi_kun_recall
@@ -36,4 +40,7 @@
 - Error/Failure (if any): 无
 - Revision After Error: 无
 - Reusable Pattern Candidate: 新项目接入时先抽取“变量口径+时间口径+识别口径”三张卡片
+- Preference Candidate: 新研究项目先绑定真实代码与变量口径，再抽象规则
+- Upgrade Target: preference
+- Confidence: medium
 - Open Questions: 事件层与 firm-year 的最终用于主文口径是否统一为 awareness-year
