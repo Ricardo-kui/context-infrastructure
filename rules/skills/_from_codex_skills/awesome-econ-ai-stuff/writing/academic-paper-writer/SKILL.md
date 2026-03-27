@@ -1,213 +1,206 @@
 ---
 name: academic-paper-writer
-description: Draft economics papers with proper structure and academic style
-workflow_stage: writing
-compatibility:
-  - claude-code
-  - cursor
-  - codex
-  - gemini-cli
-author: Awesome Econ AI Community
-version: 1.0.0
-tags:
-  - LaTeX
-  - academic-writing
-  - papers
-  - economics
+description: Draft economics or management-journal papers with outlet-specific structure, contribution logic, and submission-aware writing conventions
 ---
 
 # Academic Paper Writer
 
 ## Purpose
 
-This skill helps economists draft, structure, and polish academic papers with proper conventions for economics journals. It provides templates for different paper types and guidance on academic writing style.
+This skill helps draft, restructure, and polish academic papers while matching the writing logic of the target outlet.
+
+It now supports two explicit modes:
+
+- **economics-default**: for economics- or finance-style papers where IMRAD structure and results-first exposition dominate
+- **management-journal**: for English management, strategy, organization, or international business journals where fit, theory positioning, and front-end editorial screening are especially important
 
 ## When to Use
 
-- Starting a new research paper from scratch
+- Starting a new paper from scratch
 - Restructuring an existing draft
-- Writing specific sections (introduction, literature review, conclusion)
-- Preparing papers for journal submission
+- Writing or revising core sections such as the introduction, literature review, theory, results, or conclusion
+- Preparing a paper for journal submission
 
-## Instructions
+## Step 1: Choose the Writing Mode
 
-### Step 1: Identify Paper Type
+Use **economics-default** when:
 
-Ask the user:
-1. Is this empirical or theoretical?
-2. What is the target journal/audience?
-3. What stage is the paper at? (outline, first draft, revision)
-4. What sections need help?
+- the target outlet is economics or finance
+- the paper is mainly empirical and the outlet expects a standard IMRAD arc
+- theory development is light relative to identification and estimation
 
-### Step 2: Follow the IMRAD Structure
+Use **management-journal** when:
 
-For empirical papers, use:
-1. **Introduction** - Motivation, research question, contribution
-2. **Literature Review** - Related work and positioning
-3. **Data & Methods** - Sources, sample, empirical strategy
-4. **Results** - Main findings with tables/figures
-5. **Discussion** - Interpretation, mechanisms, limitations
-6. **Conclusion** - Summary and implications
+- the target outlet is in management, strategy, organization, or international business
+- the paper's front-end fit, theoretical positioning, and contribution framing are central to whether editors keep reading
+- the paper needs to explain not only what it finds, but why this audience should care and how the paper shifts the conversation
 
-### Step 3: Apply Economics Writing Conventions
+If the user mentions journals such as `AMJ`, `SMJ`, `JIBS`, `Organization Science`, `JOM`, or similar outlets, default to **management-journal**.
 
-- **First paragraph** should state the research question and main finding
-- **Use present tense** for established facts, past tense for your findings
-- **Be precise** with causal language (effect vs. association)
-- **Cite heavily** in the literature review
-- **Lead with results** in the results section
+## Step 2: Identify the Target and Stage
 
-## Example Output: Introduction Template
+Before drafting, determine:
+
+1. empirical or theoretical
+2. target journal / audience
+3. stage: outline, first draft, revision, or pre-submission tightening
+4. which sections need help
+
+Also determine the collaboration language:
+
+- if the user is discussing the paper in Chinese but targeting an English journal, keep the working discussion in Chinese
+- keep the actual paper prose, preflight-facing phrasing, and editor-facing labels in English unless the user explicitly asks otherwise
+
+## Step 3: Load the Right Overlay
+
+### Economics-Default
+
+Follow the standard structure:
+
+1. Introduction
+2. Literature review
+3. Data and methods
+4. Results
+5. Discussion
+6. Conclusion
+
+### Management-Journal
+
+Before drafting, load the relevant `avoid-desk-reject` references:
+
+- `rules/skills/avoid-desk-reject/references/fit-and-contribution.md`
+- `rules/skills/avoid-desk-reject/references/abstract-and-introduction.md`
+- `rules/skills/avoid-desk-reject/references/theory-and-literature.md`
+- `rules/skills/avoid-desk-reject/references/empirical-credibility.md`
+
+Use them to check:
+
+1. what conversation this paper belongs to
+2. what prior belief should move if the paper is correct
+3. whether the abstract and opening paragraphs earn the right to be read
+4. whether theory, hypotheses, measures, and claims align
+
+If the user only wants one section, route tightly:
+
+- introduction / abstract -> `write-introduction`
+- theory / literature / results / conclusion -> `write-section`
+- final pre-submission risk check -> `avoid-desk-reject`
+
+## Step 4: Write Using the Correct Paper Logic
+
+### Economics-Default Logic
+
+- first paragraph states the research question and main finding
+- methods are introduced early and efficiently
+- literature review supports positioning but does not dominate the front end
+- results lead with magnitudes and economic interpretation
+- conclusion synthesizes implications and limitations
+
+### Management-Journal Logic
+
+- **Fit before polish**: the paper must clearly belong in the target journal's conversation
+- **Contribution must move priors**: do not present a small wrinkle as the paper's main value
+- **Opening earns the right to be read**: the abstract and first 3 paragraphs must show what the paper does, why it matters, and why now
+- **Literature review positions the conversation**: it should not be a warehouse of citations
+- **Theory carries real work**: mechanism, assumptions, and hypotheses must be explicit
+- **Claims match evidence**: do not let strong prose outrun the design
+- **Chinese-in, English-out when needed**: let the user reason, diagnose, and prioritize revisions in Chinese, but draft journal-facing prose in English by default
+
+## Management-Journal Structure
+
+For empirical management papers, prefer:
+
+1. **Introduction**
+   - topic, why it matters, what is already known, what is missing, what this paper shows
+2. **Theory / literature positioning**
+   - identify the exact conversation and the paper's mechanism
+3. **Hypotheses or propositions**
+   - explicit, directional when appropriate, and falsifiable
+4. **Data and empirical strategy**
+   - enough design detail to justify the claims
+5. **Results**
+   - lead with the headline finding, then bound it
+6. **Discussion**
+   - theory implications, managerial implications, limitations
+7. **Conclusion**
+   - concise restatement of contribution and next steps
+
+## Management-Journal Introduction Template
 
 ```latex
 \section{Introduction}
 
-% Hook - Why does this matter?
-[TOPIC] is a fundamental question in economics, with implications for 
-[POLICY AREA] and [BROADER RELEVANCE]. Despite extensive research, 
-we still lack clear evidence on [SPECIFIC GAP].
+% Why this topic matters now
+[OPEN WITH THE PHENOMENON, PUZZLE, OR TENSION]
+
+% What we know and what we do not know
+Existing research shows [WHAT IS KNOWN], but we still know less about
+[THE SPECIFIC GAP OR UNRESOLVED RELATIONSHIP].
 
 % Research question
-This paper asks: [RESEARCH QUESTION IN PLAIN LANGUAGE]? 
-Specifically, we examine whether [PRECISE FORMULATION OF THE QUESTION].
+This paper asks whether [RESEARCH QUESTION].
 
 % Preview of answer
-We find that [MAIN RESULT IN ONE SENTENCE]. This effect is 
-[economically significant / modest / heterogeneous], with 
-[QUANTITATIVE SUMMARY: e.g., "a one standard deviation increase 
-in X associated with a Y percent increase in Z"].
+I find that [MAIN FINDING IN ONE OR TWO SENTENCES].
 
-% Methodology (brief)
-To identify this effect, we exploit [IDENTIFICATION STRATEGY: 
-natural experiment / RCT / instrumental variable / RDD]. 
-Our data come from [DATA SOURCE], covering [TIME PERIOD] 
-and [SAMPLE SIZE] observations.
+% Why this changes the conversation
+This matters because [WHY THE RESULT SHOULD CHANGE THE READER'S PRIOR].
 
-% Contribution / Related literature
-Our paper contributes to several strands of literature. 
-First, we extend the work of \citet{Author2020} by [EXTENSION]. 
-Second, we provide new evidence on [MECHANISM/CHANNEL] that 
-complements \citet{OtherAuthor2019}. Finally, our findings 
-have implications for [POLICY/FUTURE RESEARCH].
+% Brief design signal
+I test this argument using [DATA / DESIGN / IDENTIFICATION].
 
-% Roadmap
-The remainder of the paper is organized as follows. 
-Section~\ref{sec:background} provides background and reviews 
-related literature. Section~\ref{sec:data} describes our data 
-and empirical strategy. Section~\ref{sec:results} presents our 
-main findings. Section~\ref{sec:robustness} discusses robustness 
-checks. Section~\ref{sec:conclusion} concludes.
+% Contribution
+The paper contributes by [CONTRIBUTION 1], [CONTRIBUTION 2], and
+[CONTRIBUTION 3].
 ```
 
-## Example Output: Results Section Template
+## Section-Level Guidance
 
-```latex
-\section{Results}
-\label{sec:results}
+### Introductions
 
-% Lead with the main finding
-Table~\ref{tab:main} presents our main results. Column (1) shows 
-the baseline OLS specification without controls. The coefficient 
-on [TREATMENT VARIABLE] is [POINT ESTIMATE] (s.e. = [SE]), 
-statistically significant at the [1/5/10] percent level.
+- Start with a question or tension, not a generic topic statement
+- State the main finding early
+- Make the contribution visible before the roadmap
+- In management-journal mode, do not let sample or method novelty do all the work
 
-% Add controls incrementally
-In column (2), we add [CONTROL SET 1]. The point estimate 
-[increases/decreases slightly/remains stable] to [ESTIMATE]. 
-Column (3) includes [CONTROL SET 2] and adds [FIXED EFFECTS]. 
-Our preferred specification in column (4) includes [FULL CONTROLS] 
-and yields [FINAL ESTIMATE].
+### Literature Review / Theory
 
-% Interpret magnitude
-To gauge economic significance, note that [INTERPRETATION]. 
-A one standard deviation increase in [X] is associated with 
-a [Y] percent [increase/decrease] in [OUTCOME], or roughly 
-[COMPARISON TO MEAN/OTHER BENCHMARK].
+- Synthesize rather than summarize
+- Make the conversation visible
+- Explain the mechanism instead of only citing prior results
+- If using management-journal mode, every major block should help answer: why should this audience care?
 
-% Brief mention of mechanisms/heterogeneity if relevant
-Table~\ref{tab:hetero} explores heterogeneity by [DIMENSION]. 
-We find that the effect is [larger/concentrated among] 
-[SUBGROUP], suggesting that [INTERPRETATION].
+### Results
 
-\begin{table}[htbp]
-\centering
-\caption{Main Results: Effect of X on Y}
-\label{tab:main}
-\begin{tabular}{lcccc}
-\hline\hline
- & (1) & (2) & (3) & (4) \\
- & OLS & + Controls & + FE & Preferred \\
-\hline
-Treatment & 0.052*** & 0.048*** & 0.041** & 0.039** \\
-          & (0.012)  & (0.011)  & (0.015) & (0.016) \\
-\\
-Controls       & No  & Yes & Yes & Yes \\
-Fixed Effects  & No  & No  & Yes & Yes \\
-Cluster SE     & No  & No  & No  & Yes \\
-\\
-Observations   & 10,000 & 9,850 & 9,850 & 9,850 \\
-R-squared      & 0.05   & 0.12  & 0.35  & 0.35  \\
-\hline\hline
-\multicolumn{5}{l}{\footnotesize Notes: * p<0.10, ** p<0.05, *** p<0.01.} \\
-\multicolumn{5}{l}{\footnotesize Standard errors in parentheses.} \\
-\end{tabular}
-\end{table}
-```
+- Lead with the headline result
+- Interpret magnitudes and boundary conditions
+- Keep claim strength aligned with design strength
+- Separate headline evidence from diagnostics and appendix-style robustness when possible
 
-## Example Output: Conclusion Template
+### Conclusion
 
-```latex
-\section{Conclusion}
-\label{sec:conclusion}
-
-% Restate question and answer
-This paper examined [RESEARCH QUESTION]. Using [METHOD/DATA], 
-we found that [MAIN FINDING]. This result is robust to 
-[ROBUSTNESS CHECKS].
-
-% Implications
-Our findings have several implications. For policy, they suggest 
-that [POLICY IMPLICATION]. For theory, they provide support for 
-[THEORETICAL MECHANISM] and challenge [ALTERNATIVE VIEW].
-
-% Limitations (brief, honest)
-Several limitations warrant mention. First, [LIMITATION 1: 
-e.g., external validity]. Second, [LIMITATION 2: e.g., 
-data constraints]. Future research could address these by 
-[SUGGESTION].
-
-% Future directions
-This paper opens several avenues for future work. 
-[DIRECTION 1]. [DIRECTION 2]. We hope our findings 
-stimulate further research on [BROADER TOPIC].
-```
-
-## Writing Tips
-
-### For Introductions
-- **First sentence should grab attention** - not "This paper examines..."
-- **State your contribution clearly** - what's new about this paper?
-- **Be specific about magnitudes** - don't just say "large effect"
-- **Acknowledge limitations** preemptively in the last paragraph
-
-### For Results
-- **Lead with numbers** - put the coefficient in the first sentence
-- **Interpret economically** - what does a 0.05 coefficient mean?
-- **Guide the reader** through tables column by column
-- **Don't oversell** - distinguish statistical from economic significance
-
-### For Conclusions
-- **Don't introduce new results** - synthesize what you've shown
-- **Be honest about limitations** - reviewers will find them anyway
-- **End on the contribution** - remind readers why this matters
+- Do not introduce new results
+- Be honest about limitations
+- End on contribution and implications, not only recap
 
 ## Common Pitfalls
 
-- ❌ Burying the main result in the middle of the paper
-- ❌ Using "significant" without specifying statistical or economic
-- ❌ Over-claiming causality without proper identification
-- ❌ Literature review that's just a list of papers
-- ❌ Conclusion that's just a summary
+- Burying the main result too deep in the paper
+- Using "significant" without clarifying statistical or substantive meaning
+- Over-claiming causality without sufficient design support
+- Writing a literature review that is only a list of papers
+- Treating fit and contribution as if style polishing can substitute for them
+- In management-journal mode, mistaking theory citations for actual theoretical positioning
+
+## Pre-Submission Rule
+
+If the user is preparing for submission, the paper is not done until it has passed a final `avoid-desk-reject` style preflight:
+
+- fit and contribution
+- abstract and introduction
+- theory and literature
+- empirical credibility
+- submission package and transparency
 
 ## References
 
@@ -216,6 +209,11 @@ stimulate further research on [BROADER TOPIC].
 - [Thomson (2011) A Guide for the Young Economist](https://mitpress.mit.edu/books/guide-young-economist)
 
 ## Changelog
+
+### v1.1.0
+- Added `management-journal` mode
+- Integrated desk-reject-aware contribution, theory, and evidence checks
+- Added explicit routing to section-specific and preflight skills
 
 ### v1.0.0
 - Initial release with introduction, results, and conclusion templates
