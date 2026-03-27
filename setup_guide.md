@@ -1,4 +1,4 @@
-# Setup Guide: Context Infrastructure
+﻿# Setup Guide: Context Infrastructure
 
 这是 AI 引导的配置指南。按步骤操作，每步完成后立刻能感受到差异。
 

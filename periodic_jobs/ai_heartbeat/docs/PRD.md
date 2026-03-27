@@ -1,4 +1,4 @@
-# AI Heartbeat: 渐进式披露记忆系统产品需求文档 (PRD)
+﻿# AI Heartbeat: 渐进式披露记忆系统产品需求文档 (PRD)
 
 ## 1. 产品概述
 

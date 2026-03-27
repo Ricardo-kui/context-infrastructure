@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_multiplier_not_replacement_2026
 category: cross_domain
 created: 2026-02-23

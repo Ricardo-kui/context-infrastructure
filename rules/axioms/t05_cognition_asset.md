@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_cognition_asset_2026
 category: tech_decisions
 created: 2026-02-23

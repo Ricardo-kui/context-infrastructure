@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_closed_loop_calibration_2026
 category: management
 created: 2026-02-23

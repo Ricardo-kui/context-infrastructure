@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_a13_tech_adoption_stages_2026
 category: ai_agentic
 created: 2026-03-01

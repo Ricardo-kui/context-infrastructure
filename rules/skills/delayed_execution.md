@@ -1,4 +1,4 @@
-# Skill: Delayed Execution (延时执行)
+﻿# Skill: Delayed Execution (延时执行)
 
 用于在指定时间后执行任务，支持两种模式：命令行任务和智能任务。
 

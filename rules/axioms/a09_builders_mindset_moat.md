@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_a09_builders_mindset_moat_2026
 category: ai_agentic
 created: 2026-02-23

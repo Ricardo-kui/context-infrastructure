@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_results_certainty_2026
 category: tech_decisions
 created: 2026-02-23

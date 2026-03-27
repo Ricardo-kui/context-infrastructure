@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_tool_composition_as_capability_expansion_2026
 category: ai_agentic
 created: 2026-02-23

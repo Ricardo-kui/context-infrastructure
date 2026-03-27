@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_x6_big_picture_system_analysis_2026
 category: cross_domain
 created: 2026-03-01

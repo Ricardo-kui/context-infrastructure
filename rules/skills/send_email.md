@@ -1,4 +1,4 @@
-# Skill: Send Email via Gmail
+﻿# Skill: Send Email via Gmail
 
 This skill allows the AI to send email notifications using a Gmail app-specific password.
 

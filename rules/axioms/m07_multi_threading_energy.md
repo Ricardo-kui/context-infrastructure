@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_m7_multi_threading_energy_2026
 category: management
 created: 2026-02-23

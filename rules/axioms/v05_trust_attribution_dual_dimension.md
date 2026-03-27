@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_v5_trust_attribution_dual_dimension_2026
 category: trust
 created: 2026-03-01

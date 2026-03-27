@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_x5_precision_cascades_through_systems_2026
 category: cross_domain
 created: 2026-02-23

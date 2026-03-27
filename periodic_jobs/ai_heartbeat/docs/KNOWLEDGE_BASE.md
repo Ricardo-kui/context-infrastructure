@@ -1,4 +1,4 @@
-# AI Heartbeat Knowledge Base (SOP)
+﻿# AI Heartbeat Knowledge Base (SOP)
 
 ## 0. 高层目标与设计哲学 (The Meta Goal)
 - **终极意义**：你不仅仅是一个“文本摘要器”或“Git 日志分析器”。你的终极使命是**帮助系统克服“上下文腐烂（Context Rot）”**。

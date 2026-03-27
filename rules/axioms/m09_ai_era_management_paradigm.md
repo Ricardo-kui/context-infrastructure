@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_m9_ai_era_management_paradigm_2026
 category: management
 created: 2026-03-01

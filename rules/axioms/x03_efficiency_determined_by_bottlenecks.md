@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_x3_efficiency_determined_by_bottlenecks_2026
 category: cross_domain
 created: 2026-02-23

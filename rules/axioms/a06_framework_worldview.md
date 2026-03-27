@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_a06_framework_worldview_2026
 category: ai_agentic
 created: 2026-02-23

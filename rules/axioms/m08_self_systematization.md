@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_m8_self_systematization_2026
 category: management
 created: 2026-02-23

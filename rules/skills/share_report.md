@@ -1,4 +1,4 @@
-# Skill: 分享报告到 Web
+﻿# Skill: 分享报告到 Web
 
 将 Markdown 报告转为 HTML 并发布到 <your-domain>/share，返回可访问的 URL。
 

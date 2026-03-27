@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_x1_constraint_paradox_2026
 category: cross_domain
 created: 2026-02-23

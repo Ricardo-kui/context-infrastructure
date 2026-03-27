@@ -1,4 +1,4 @@
-# AGENTS.md - Your Workspace
+﻿# AGENTS.md - Your Workspace
 
 > **First time here?** Start with `setup_guide.md` — it'll walk you through setup in under an hour.
 

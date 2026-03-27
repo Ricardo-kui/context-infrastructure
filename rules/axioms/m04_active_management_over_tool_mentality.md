@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_active_management_over_tool_mentality_2026
 category: management
 created: 2026-02-23

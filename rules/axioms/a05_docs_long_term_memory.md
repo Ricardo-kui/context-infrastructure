@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_docs_long_term_memory_2026
 category: tech_decisions
 created: 2026-02-23

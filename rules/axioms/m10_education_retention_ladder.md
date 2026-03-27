@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_m10_education_retention_ladder_2026
 category: management
 created: 2026-03-01

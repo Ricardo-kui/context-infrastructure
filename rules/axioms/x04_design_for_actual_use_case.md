@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_x4_design_for_actual_use_case_2026
 category: cross_domain
 created: 2026-02-23

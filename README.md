@@ -1,4 +1,4 @@
-# Context Infrastructure — Reference Implementation
+﻿# Context Infrastructure — Reference Implementation
 
 > 背景阅读：[为什么AI只会说正确的废话，以及怎么把它逼出舒适区](https://yage.ai/context-infrastructure.html)
 

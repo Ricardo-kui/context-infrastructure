@@ -1,4 +1,4 @@
-# Skill: Gemini 图片生成与放大
+﻿# Skill: Gemini 图片生成与放大
 
 使用 Gemini 模型生成图片、编辑图片或放大图片分辨率。单文件 CLI 工具，也可作为 Python 模块 import。
 

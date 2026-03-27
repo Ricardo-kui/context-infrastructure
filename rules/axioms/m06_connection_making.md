@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_m6_connection_making_2026
 category: management
 created: 2026-02-23

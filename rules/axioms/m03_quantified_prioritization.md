@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_quantified_prioritization_2026
 category: management
 created: 2026-02-23

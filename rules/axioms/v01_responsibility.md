@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_v1_responsibility_2026
 category: trust
 created: 2026-02-23

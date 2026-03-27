@@ -1,4 +1,4 @@
-# Memory Observations
+﻿# Memory Observations
 
 这是三层记忆系统的 L1/L2 层。每日观察由 `periodic_jobs/ai_heartbeat/src/v0/observer.py` 自动写入，每周由 `reflector.py` 整理和蒸馏。
 

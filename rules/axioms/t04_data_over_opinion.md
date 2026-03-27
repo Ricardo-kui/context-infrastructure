@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_data_over_opinion_2026
 category: tech_decisions
 created: 2026-02-23

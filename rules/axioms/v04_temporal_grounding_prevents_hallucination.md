@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_v4_temporal_grounding_prevents_hallucination_2026
 category: trust
 created: 2026-02-23

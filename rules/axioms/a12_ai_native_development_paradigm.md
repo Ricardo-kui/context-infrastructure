@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_ai_native_development_paradigm_2026
 category: ai_agentic
 created: 2026-02-23

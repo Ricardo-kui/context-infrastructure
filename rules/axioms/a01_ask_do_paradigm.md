@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_ask_do_paradigm_2026
 category: ai_agentic
 created: 2026-02-23

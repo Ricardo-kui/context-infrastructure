@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_ic_to_manager_2026
 category: management
 created: 2026-02-23

@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_first_principles_methodology_2026
 category: tech_decisions
 created: 2026-02-23

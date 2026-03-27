@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_v3_attribution_shapes_perception_2026
 category: trust
 created: 2026-02-23

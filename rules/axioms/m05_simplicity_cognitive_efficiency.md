@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_simplicity_cognitive_efficiency_2026
 category: management
 created: 2026-02-23

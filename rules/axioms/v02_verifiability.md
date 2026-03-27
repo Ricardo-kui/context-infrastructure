@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_v2_verifiability_2026
 category: trust
 created: 2026-02-23

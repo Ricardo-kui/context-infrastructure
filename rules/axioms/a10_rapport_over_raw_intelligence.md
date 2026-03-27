@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_rapport_over_raw_intelligence_2026
 category: ai_agentic
 created: 2026-02-23

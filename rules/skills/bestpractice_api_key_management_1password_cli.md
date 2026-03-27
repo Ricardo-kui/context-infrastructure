@@ -1,4 +1,4 @@
----
+﻿---
 title: API Key 管理与调用最佳实践（1Password CLI）
 category: BestPractice
 tags: [security, api-key, 1password, op-cli, environment-variables]

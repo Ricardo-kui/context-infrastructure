@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_a07_design_philosophy_ceiling_2026
 category: ai_agentic
 created: 2026-02-23

@@ -1,4 +1,4 @@
----
+﻿---
 id: axiom_x2_systematic_debugging_hypothesis_testing_2026
 category: cross_domain
 created: 2026-02-23

@@ -1,4 +1,4 @@
-# Skill: Google Docs 操作
+﻿# Skill: Google Docs 操作
 
 通过 CLI 命令操控 Google Docs：发布 Markdown 文件、创建文档、搜索、修改、分享、Tab 管理。
 
