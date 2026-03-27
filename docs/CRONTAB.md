@@ -89,6 +89,8 @@ Windows 用户可直接运行：
 powershell -ExecutionPolicy Bypass -File .\tools\register_ai_heartbeat_tasks.ps1
 ```
 
+如果希望切到更接近后台运行的 S4U 模式，请在“以管理员身份运行”的 PowerShell 里执行上面的命令。
+
 ---
 
 ## 注意事项

@@ -111,6 +111,8 @@ powershell -ExecutionPolicy Bypass -File .\tools\register_ai_heartbeat_tasks.ps1
 - 每日 `21:00` 的 observer
 - 每周日 `21:30` 的 reflector
 
+如果你希望任务尽量接近“未登录也能跑”的后台模式，请用“以管理员身份运行”的 PowerShell 执行这条命令。脚本会尝试使用 S4U 模式注册任务。
+
 调整路径和时间为你的实际情况。
 
 ### 3d. 验证
