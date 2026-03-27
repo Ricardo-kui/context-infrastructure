@@ -17,6 +17,18 @@ This repository can be applied in Codex as a workspace-level context system.
    - `rules/SOUL.md` (optional but recommended)
 4. Follow `setup_guide.md` for periodic jobs and Tier-2 tools
 
+## Keep the global install in sync
+
+If you update `rules/`, `docs/`, or the setup notes in this repository, resync the global Codex install:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools\sync_codex_context.ps1
+```
+
+This mirrors the managed files into:
+
+- `C:\Users\admin\.codex\rules\context-infrastructure`
+
 ## Borrowed Workflow (Pedro Sant'Anna) - Installed
 
 A Codex-adapted version of the "plan-first + contractor loop" workflow has been added.
