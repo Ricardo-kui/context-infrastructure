@@ -1,7 +1,10 @@
-# Skills Index
+﻿# Skills Index
 
 本索引指向可复用的 Skills（技能）—— AI 可以调用的工具、流程和最佳实践。
 
+- **研究任务优先入口**：先看 [INDEX_RESEARCH_CORE.md](./INDEX_RESEARCH_CORE.md)（战略管理+计量实证白名单）
+
+- **外部导入技能隔离区**：_from_codex_skills/ 仅作参考，不默认触发
 - **想使用某个能力** → 浏览下方分类，找到对应的 skill 文件
 - **想添加新 skill** → 参考现有文件格式，添加到对应分类
 
@@ -45,6 +48,7 @@
 
 特定任务的完整工作流程。
 
+- [Plan-First Contractor Loop](./workflow_plan_first_contractor.md) ✅ — 复杂任务统一流程：规格澄清 → 计划 → 执行 → 验证 → 审计 → 修复（80/90/95 质量门槛）
 - [并行 Subagent 工作流](./workflow_parallel_subagents.md) ✅ — 调用后台 agent、并行执行多个 subagent
   - **必读**：初次使用并行 subagent 前，必须先读此 skill
   - **禁止轮询**：agent 运行期间不要反复调用 `background_output`，系统会自动通知
@@ -103,3 +107,4 @@ Skill 格式参考（最简版）：
 Skills 采用渐进式披露原则：
 - **INDEX.md** 提供概览，快速定位
 - **具体 skill 文件** 包含完整的操作步骤和示例
+
