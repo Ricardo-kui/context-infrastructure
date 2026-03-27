@@ -59,10 +59,10 @@
 ### 4.2 反思与晋升 (L2 Reflector)
 - **核心目标**: 实现从“短期观测”到“长期规则”的进化。
 - **操作文件**:
-  1. **周反思层 (L2)**: 使用 `contexts/memory/reflector_weekly_template.md` 识别重复模式、风险和默认动作。
+  1. **周反思层 (L2)**: 参考 `contexts/memory/reflector_weekly_template.md`，并将每周反思追加到 `contexts/memory/WEEKLY_REFLECTIONS.md`。
   2. **偏好层 (L2.5)**: 将已经足够稳定、但还不需要全局被动加载的内容写入 `contexts/memory/PREFERENCE_REGISTRY.md`。
   3. **规则层 (L3)**: 只有真正成为跨 session 默认约束的内容，才修改 `rules/`、`axioms/` 或 `skills/`。
-  4. **记忆层清理**: 清理过期 🟢 记录，但保留关键决策痕迹和可回溯证据。
+  4. **记忆层清理**: 清理过期 🟢 记录，但保留关键决策痕迹、周反思证据链和可回溯依据。
 - **职责**: 确保记忆沿着 `OBSERVATIONS -> weekly reflection -> preference registry -> rules/axioms/skills` 的方向逐步进化。
 
 ### 4.3 长期偏好注册表 (L2.5 Preference Registry)
@@ -73,6 +73,7 @@
   - 必须写清适用边界
   - 必须给出证据来源
   - 必须标注 `candidate | stable | retired`
+  - 优先落到 `review | identification | writing | workflow | collaboration` 等清晰域中
 
 ### 4.4 晋升协议 (Promotion Protocol)
 - **目标文件**: `contexts/memory/MEMORY_PROMOTION_PROTOCOL.md`

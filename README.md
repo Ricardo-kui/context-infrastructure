@@ -43,7 +43,9 @@ context-infrastructure/
 │
 ├── contexts/
 │   ├── memory/
-│   │   └── OBSERVATIONS.md      # 三层记忆系统的 L1/L2 层
+│   │   ├── OBSERVATIONS.md      # L1 原始观察日志
+│   │   ├── WEEKLY_REFLECTIONS.md # L2 周反思落盘日志
+│   │   └── PREFERENCE_REGISTRY.md # L2.5 长期偏好注册表
 │   ├── survey_sessions/         # 调研报告存放目录
 │   ├── daily_records/           # 日常记录存放目录
 │   └── thought_review/          # 思考复盘存放目录
@@ -54,8 +56,8 @@ context-infrastructure/
 │       │   ├── PRD.md           # 记忆系统设计文档
 │       │   └── KNOWLEDGE_BASE.md # 观察和反思的 SOP
 │       └── src/v0/
-│           ├── observer.py      # 每日观察脚本（需配置 cron）
-│           └── reflector.py     # 每周反思脚本（需配置 cron）
+│           ├── observer.py      # 每日观察脚本（写入 OBSERVATIONS.md）
+│           └── reflector.py     # 每周反思脚本（更新 WEEKLY_REFLECTIONS / PREFERENCE_REGISTRY）
 │
 ├── tools/
 │   ├── semantic_search/         # 语义搜索（Tier 2）

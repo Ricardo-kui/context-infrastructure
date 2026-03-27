@@ -1,4 +1,6 @@
 .env
 .venv/
+__pycache__/
+*.pyc
 tmp_*.txt
 adhoc_jobs/smoke_test_*/

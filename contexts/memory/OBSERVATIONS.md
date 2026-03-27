@@ -5,6 +5,7 @@
 相关文件：
 
 - `contexts/memory/reflector_weekly_template.md`：周反思模板（L2）
+- `contexts/memory/WEEKLY_REFLECTIONS.md`：每周反思落盘日志（L2）
 - `contexts/memory/PREFERENCE_REGISTRY.md`：长期偏好注册表（L2.5）
 - `contexts/memory/MEMORY_PROMOTION_PROTOCOL.md`：从观察晋升到偏好/规则/公理的协议
 
@@ -58,7 +59,8 @@ grep -A 20 "Date: $(date -v-7d +%Y-%m-%d)" contexts/memory/OBSERVATIONS.md
 ## 与长期偏好的关系
 
 - `OBSERVATIONS.md` 只负责保留原始判断痕迹，不直接承担长期规范职能
-- 每周反思后，稳定模式应进入 `PREFERENCE_REGISTRY.md`
+- 每周反思先写入 `WEEKLY_REFLECTIONS.md`，形成可追溯的 L2 证据链
+- 再由周反思结果判断哪些稳定模式应进入 `PREFERENCE_REGISTRY.md`
 - 再由偏好注册表决定是否晋升到 `rules/`、`axioms/` 或 `skills/`
 
 ---

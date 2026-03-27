@@ -14,7 +14,7 @@
 8:00 AM   → AI Heartbeat Observer: 扫描文件变动，提取观察写入 OBSERVATIONS.md
 Every 2m  → Situation Awareness: 快照采集（交通/摄像头/警报）
 Every 12h → Situation Awareness: 风力预警检查
-Weekly    → AI Heartbeat Reflector: 合并/提升/清理记忆
+Weekly    → AI Heartbeat Reflector: 写入 WEEKLY_REFLECTIONS.md，更新 PREFERENCE_REGISTRY.md，并谨慎晋升 L3
 Daily     → Crontab Monitor: 健康审计，发现异常则发告警邮件
 ```
 
@@ -32,10 +32,10 @@ Daily     → Crontab Monitor: 健康审计，发现异常则发告警邮件
 
 ### AI Heartbeat Reflector（每周）
 
-合并、提升、清理 OBSERVATIONS.md 中积累的观察，蒸馏为更高层次的认知。
+回看一周内的 OBSERVATIONS，写入 `contexts/memory/WEEKLY_REFLECTIONS.md`，更新 `contexts/memory/PREFERENCE_REGISTRY.md`，并在证据足够强时晋升到更高层规则。
 
 - **脚本**：`periodic_jobs/ai_heartbeat/src/v0/reflector.py`
-- **依赖**：OpenCode Server API（`OPENCODE_API_URL`）
+- **依赖**：OpenCode Server API（`OPENCODE_BASE_URL`、`OPENCODE_USERNAME`、`OPENCODE_PASSWORD`）
 - **建议时间**：每周日 9:00 AM
 
 ### Crontab Monitor（每日）
@@ -87,7 +87,7 @@ Daily     → Crontab Monitor: 健康审计，发现异常则发告警邮件
 
 1. **路径替换**：所有 `/path/to/your/workspace` 必须替换为你的实际绝对路径。
 2. **虚拟环境**：脚本依赖 `.venv` 中的 Python 包，确保先运行 `uv pip install -r requirements.txt`（如有）。
-3. **环境变量**：cron 环境不会自动加载 `.env`，建议在脚本中显式加载，或在 crontab 中用 `env $(cat .env | xargs)` 注入。
+3. **环境变量**：cron 环境不会自动加载 `.env`，建议确保脚本能拿到 `OPENCODE_BASE_URL`、`OPENCODE_USERNAME`、`OPENCODE_PASSWORD`，必要时再补 `OPENCODE_MODEL`、`OPENCODE_PROVIDER`、`OPENCODE_AGENT`。
 4. **时区**：macOS cron 默认使用系统时区；Linux 服务器建议在 crontab 顶部显式设置 `TZ=`。
 5. **日志**：示例中日志写入 `/tmp/`，生产环境建议改为持久化路径（如 `logs/` 目录）。
 6. **依赖顺序**：Observer 依赖当天的文件变动，建议在 daily briefing 和 news survey 之后运行（8:30 AM 以后）。
