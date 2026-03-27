@@ -3,6 +3,7 @@
 本索引指向可复用的 Skills（技能）—— AI 可以调用的工具、流程和最佳实践。
 
 - **研究任务优先入口**：先看 [INDEX_RESEARCH_CORE.md](./INDEX_RESEARCH_CORE.md)（战略管理+计量实证白名单）
+- **研究任务默认止步规则**：如果 `INDEX_RESEARCH_CORE.md` 已覆盖当前任务，就不要继续扩展到总索引的其他部分
 
 - **外部导入技能隔离区**：_from_codex_skills/ 仅作参考，不默认触发
 - **想使用某个能力** → 浏览下方分类，找到对应的 skill 文件

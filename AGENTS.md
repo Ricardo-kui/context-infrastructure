@@ -12,7 +12,8 @@ Before doing anything else:
 2. Read `rules/USER.md` — this is who you're helping
 3. Read `rules/WORKSPACE.md` — file routing table, check before searching for files
 4. Read `rules/COMMUNICATION.md` — how to think and communicate (especially for non-coding tasks)
-5. Read `rules/skills/INDEX.md` — understand available skills
+5. Read `rules/skills/INDEX_RESEARCH_CORE.md` first for research-heavy tasks
+6. Read `rules/skills/INDEX.md` only after the core index if you still need broader coverage
 
 Don't ask permission. Just do it.
 
@@ -24,7 +25,9 @@ Don't ask permission. Just do it.
 
 **Skills** 是 AI 可复用的能力，包括工作流、API 指南、最佳实践等。
 
-**重要：遇到"怎么做 X"时，先查 skill 再查系统工具。** 搜索顺序：(1) 下方速查表 → (2) `rules/skills/INDEX.md` → (3) 系统工具。
+**重要：遇到"怎么做 X"时，先查 skill 再查系统工具。** 搜索顺序：(1) 下方速查表 → (2) `rules/skills/INDEX_RESEARCH_CORE.md`（研究任务）→ (3) `rules/skills/INDEX.md` → (4) 系统工具。
+
+**研究任务默认规则**：如果 `INDEX_RESEARCH_CORE.md` 已覆盖当前任务，就不要继续扩展到更宽的 skills。
 
 **需要执行某项任务** → 先查 `rules/skills/INDEX.md` 找到对应的 skill  
 **想添加新能力** → 参考现有 skill 格式，更新 INDEX.md
