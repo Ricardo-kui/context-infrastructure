@@ -50,6 +50,7 @@
 特定任务的完整工作流程。
 
 - [Plan-First Contractor Loop](./workflow_plan_first_contractor.md) ✅ — 复杂任务统一流程：规格澄清 → 计划 → 执行 → 验证 → 审计 → 修复（80/90/95 质量门槛）
+- [投稿前 Desk-Reject 预检](./avoid-desk-reject/SKILL.md) ✅ — 英文管理/国际商务期刊投稿前体检；输出英文 preflight report，诊断 fit、贡献、引言、理论、实证与 submission package 风险
 - [并行 Subagent 工作流](./workflow_parallel_subagents.md) ✅ — 调用后台 agent、并行执行多个 subagent
   - **必读**：初次使用并行 subagent 前，必须先读此 skill
   - **禁止轮询**：agent 运行期间不要反复调用 `background_output`，系统会自动通知

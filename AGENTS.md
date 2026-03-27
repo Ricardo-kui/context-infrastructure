@@ -34,6 +34,10 @@ Don't ask permission. Just do it.
 
 ### 常用 Skill 速查（以 INDEX.md 为准）
 
+**投稿前拒稿风险诊断 / target journal fit** → `rules/skills/avoid-desk-reject/SKILL.md`  
+- 先做 preflight，再决定是改引言、改理论、还是改识别  
+- 输出：英文 preflight report + 中文解释
+
 **深度调研任务** → `rules/skills/workflow_deep_research_survey.md`  
 - 初步扫描 → 分割维度 → 多 Agent 并行 → 交叉验证 → 写报告  
 - 输出：`contexts/survey_sessions/`

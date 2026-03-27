@@ -21,7 +21,8 @@
 3. 再做结果表达：
    - `latex-tables`
    - `econ-visualization`
-4. 最后做核验：
+4. 最后做核验与投稿前预检：
+   - `avoid-desk-reject`
    - `proofread`
    - `review-code`
    - `verify-claims`
@@ -31,11 +32,14 @@
 如果任务描述里同时出现“战略管理”和“DiD / event study / policy shock / staggered adoption”，默认先把它视为识别与估计任务，而不是文献任务。  
 此时优先组合：`did-analysis` + `stata`。
 
+如果任务描述里同时出现 `desk reject`、`投稿前检查`、`target journal`、`abstract`、`editor` 或 `cover letter`，默认先把它视为投稿前 desk-review 风险诊断任务。  
+此时优先组合：`avoid-desk-reject` + `write-section`；若主问题明显在引言，则改用 `avoid-desk-reject` + `write-introduction`。
+
 ---
 
 ## 1. 最小技能栈
 
-绝大多数任务先在这 8 个里选，通常已经够用：
+绝大多数任务先在这 9 个里选，通常已经够用：
 
 1. `did-analysis`  
 路径：`rules/skills/_from_codex_skills/did-skills/SKILL.md`  
@@ -61,11 +65,15 @@
 路径：`rules/skills/_from_codex_skills/awesome-econ-ai-stuff/writing/latex-tables/SKILL.md`  
 用途：投稿级回归表和结果表输出。
 
-7. `proofread`  
+7. `avoid-desk-reject`  
+路径：`rules/skills/avoid-desk-reject/SKILL.md`  
+用途：英文管理学 / 国际商务期刊投稿前体检主入口；适用于 desk reject 风险诊断、fit 判断、abstract / intro / theory / empirics / submission package 预检。
+
+8. `proofread`  
 路径：`rules/skills/_from_codex_skills/academic-writing/proofread/SKILL.md`  
 用途：语言、逻辑流、术语一致性和可读性收口。
 
-8. `review-code`  
+9. `review-code`  
 路径：`rules/skills/_from_codex_skills/academic-writing/review-code/SKILL.md`  
 用途：代码正确性、复现风险与公式/口径一致性审查。
 
@@ -107,6 +115,8 @@
 
 ### E. 核验与审稿准备
 
+- 投稿前 desk-reject 风险预检：
+  - 首选 `avoid-desk-reject`
 - 代码与复现：
   - 首选 `review-code`
 - 文本清晰度：
@@ -141,6 +151,12 @@
    - `latex-tables` + `econ-visualization` + `proofread`
 6. 审稿应对或风险排查：
    - `review-code` + `verify-claims` + `write-section`
+7. 投稿前 desk-reject 预检：
+   - `avoid-desk-reject` + `write-section`
+8. 引言导向的投稿前体检：
+   - `avoid-desk-reject` + `write-introduction`
+9. 识别可信度审查：
+   - `avoid-desk-reject` + `did-analysis` + `stata`
 
 ---
 
@@ -162,8 +178,9 @@
 
 如果只能快速做一个判断，就按这个：
 
-1. 先问：这是识别问题、代码问题、写作问题，还是表达问题？  
-2. 若是识别/代码：优先 `did-analysis`、`stata`、`python-panel-data`  
-3. 若是写作：优先 `write-section` 或 `write-introduction`  
-4. 若是表图：优先 `latex-tables` 或 `econ-visualization`  
-5. 若是收尾审查：优先 `proofread`、`review-code`、`verify-claims`
+1. 先问：这是投稿前 desk-review 风险、识别问题、代码问题、写作问题，还是表达问题？  
+2. 若是投稿前风险：优先 `avoid-desk-reject`  
+3. 若是识别/代码：优先 `did-analysis`、`stata`、`python-panel-data`  
+4. 若是写作：优先 `write-section` 或 `write-introduction`  
+5. 若是表图：优先 `latex-tables` 或 `econ-visualization`  
+6. 若是收尾审查：优先 `proofread`、`review-code`、`verify-claims`

@@ -43,10 +43,10 @@
 
 ---
 
-## P. Professor Core（首批个人公理，12条）
+## P. Professor Core（个人公理，18条）
 
 > 说明：以下是基于当前研究身份（战略管理 + 计量实证 + AI 协作）沉淀的第一批个人公理。  
-> 作用：优先用于论文问题定义、识别设计、写作叙事、审稿应对与复现治理。
+> 作用：优先用于论文问题定义、识别设计、写作叙事、审稿应对、投稿前预检与复现治理。
 
 | ID | 公理 | 核心含义 |
 |----|------|----------|
@@ -62,6 +62,12 @@
 | P10 | [可复现性就是可信度](professor/p10_reproducibility_is_credibility.md) | 结果必须可追溯到数据代码参数 |
 | P11 | [AI是判断放大器](professor/p11_ai_is_judgment_amplifier_not_substitute.md) | AI放大判断，不替代判断 |
 | P12 | [显性化偏好本身就是改进](professor/p12_bias_made_explicit_is_improvement.md) | 可见偏好才可反思与修正 |
+| P13 | [投稿匹配先于技术打磨](professor/p13_fit_before_polish.md) | 先过 journal fit，再谈方法打磨 |
+| P14 | [贡献必须改变读者先验](professor/p14_contribution_must_move_priors.md) | 首发不够，贡献必须重排判断 |
+| P15 | [摘要与开头必须先赢得继续阅读权](professor/p15_opening_earns_the_right_to_be_read.md) | desk-review 首先筛的是 front end |
+| P16 | [文献综述的职责是定位对话](professor/p16_literature_review_positions_the_conversation.md) | 综述是问题定位，不是引用堆积 |
+| P17 | [投稿包透明度是成熟度信号](professor/p17_submission_package_signals_maturity.md) | cover letter 与披露本身会传递可信度 |
+| P18 | [过早投稿会把可修问题变成快速拒稿](professor/p18_premature_submission_converts_fixable_issues_into_rejection.md) | undercooked 稿件会把内部问题外包给编辑 |
 
 ---
 
@@ -147,9 +153,10 @@
 
 | 领域 | 数量 |
 |------|------|
+| Professor Core | 18 |
 | AI/Agentic | 13 |
 | 技术决策 | 9 |
 | 管理/工作哲学 | 10 |
 | 信任与验证 | 5 |
 | 跨域隐喻 | 6 |
-| **总计** | **43** |
+| **总计** | **61** |
