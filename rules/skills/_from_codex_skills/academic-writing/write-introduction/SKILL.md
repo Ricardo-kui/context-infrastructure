@@ -1,217 +1,155 @@
----
+﻿---
 name: write-introduction
-description: Write the thesis Introduction (Chapter 1) using a research-informed, multi-pass workflow grounded in academic writing best practices
+description: Write the thesis Introduction (Chapter 1) using a research-informed, multi-pass workflow grounded in academic writing best practices and journal-facing desk-reject guardrails
 ---
 
 # Write Introduction Skill
 
 Write Chapter 1 (Introduction) for the thesis "Automation and Political Ideology: Task Displacement and the Conservative Shift Among Exposed Workers."
 
-This skill implements a structured, multi-pass writing workflow distilled from leading academic writing guides and adapted for a Master's thesis.
+This skill is still thesis-specific, but it now carries an explicit journal-facing front-end filter: the introduction must not only read well, it must help the paper clear early editorial screening.
 
 ## Arguments
 
-- `draft` — Run the full pipeline: research, draft, style-match, verify (default)
-- `outline` — Produce only a detailed outline with paragraph-level annotations
-- `revise` — Revise an existing draft of Ch.1 (assumes `01_introduction.tex` already has content)
+- `draft` - Run the full pipeline: research, outline, draft, style-match, verify
+- `outline` - Produce only a detailed outline with paragraph-level annotations
+- `revise` - Revise an existing draft of Ch.1
 
-## Academic Writing Foundations
+## Core Writing Foundations
 
-This skill is built on best practices from:
+This skill is built around:
 
-- **Keith Head** ("The Introduction Formula"): Hook → Question → Antecedents → Value-Added → Roadmap
-- **Jesse Shapiro** ("Four Steps to an Applied Micro Paper"): Distinguish *aspirational* paragraphs ("I show that X causes Y") from *contractual* paragraphs ("Section 2 does A, Section 3 does B"). Aspirational paragraphs are the heart of the introduction; contractual paragraphs are its skeleton.
-- **Claudia Goldin** ("Writing Tips"): Lead with your strongest result. The paper is persuasion, not a mystery novel. No generic section headings.
-- **Marc Bellemare** ("How to Write Applied Papers"): In a thesis, the introduction is longer than in a journal article — it should be self-contained enough that a reader who skips everything else still understands the contribution.
-- **Gallea's one-shot template**: Hook → Gap → Contribution → Results → Roadmap — compressed for a journal paper but expandable for a thesis.
+- **Keith Head**: Hook -> Question -> Antecedents -> Value-Added -> Roadmap
+- **Jesse Shapiro**: Aspirational paragraphs before contractual paragraphs
+- **Claudia Goldin**: No mystery novels; lead with the answer
+- **Marc Bellemare**: The introduction should be self-contained enough for a busy reader
 
 ### Key Principles
 
-1. **No mystery novels** (Goldin): State the main finding in the first 2 paragraphs. The reader should know "automation exposure → conservative shift" before paragraph 3.
-2. **Every sentence earns its place** (Shapiro): No filler. No "it is worth noting." No "interestingly."
-3. **Aspirational before contractual** (Shapiro): Tell the reader *what you found* before telling them *how the chapter is organized*.
-4. **Self-contained** (Bellemare): A busy committee member who reads only Ch.1 should still understand the research question, method, key findings, and contribution.
-5. **Bridge, don't duplicate** (Head): The Antecedents section is a 3-4 paragraph map of the literature, NOT a mini literature review. Point to Ch.2 for depth.
+1. **No mystery novels**: State the main finding in the first 2 paragraphs.
+2. **Every sentence earns its place**: No filler and no generic claims of importance.
+3. **Aspirational before contractual**: Tell the reader what you found before telling them how the chapter is organized.
+4. **Self-contained**: A reader who only reads Ch.1 should still understand the question, method, key finding, and contribution.
+5. **Bridge, do not duplicate**: Antecedents should map the conversation, not replay the entire literature review.
+6. **Opening earns the right to be read**: The abstract and first 3 paragraphs must surface the question, answer, and why the audience should care.
+7. **Contribution must move priors**: Do not sell a small wrinkle as a journal-level contribution.
+8. **Fit before polish**: If journal positioning is weak, fix that before sentence-level refinement.
 
----
+## Journal-Facing Overlay
 
-## Target Structure (~450-550 lines, ~8-10 pages)
+If the introduction is intended for journal submission, desk-review screening, or target-journal positioning, read these additional files before drafting or revising:
 
-```
-Chapter 1: Introduction
-├── 1. Hook (2-3 paragraphs)
-│   Opening with the contemporary phenomenon: populist/conservative surge
-│   + economic disruption from automation. Ground in a specific fact or
-│   striking observation. Then pivot to the scholarly puzzle.
-│
-├── 2. Research Question (1 paragraph)
-│   Clear, precise statement: "I ask whether workers in occupations more
-│   exposed to task-displacing automation shift toward conservative
-│   political ideology."
-│
-├── 3. This Thesis: Approach & Findings (3-4 paragraphs)
-│   [ASPIRATIONAL — Shapiro]
-│   What I do: task displacement measure from BEA-KLEMS + ACS + O*NET,
-│   IRT ideology from CCES, pseudo-panel 2006-2022, TWFE estimation.
-│   What I find: β > 0 (automation → conservative shift), heterogeneous
-│   effects, lag structure.
-│   How I identify: shift-share logic, pre-determination of shares.
-│
-├── 4. Antecedents (3-4 paragraphs)
-│   [Head's "Antecedents" — brief, not Ch.2-depth]
-│   a. Task-based framework (ALM 2003) → automation measurement
-│   b. Economic shocks → politics (ADH 2013, Colantone-Stanig, Frey et al.)
-│   c. Cultural backlash vs economic insecurity debate
-│   Each paragraph should end with what the prior work DOESN'T do that
-│   this thesis addresses.
-│
-├── 5. Contribution (3-4 paragraphs)
-│   [Moved from Ch.2 §2.4 — Head's "Value-Added"]
-│   a. Comprehensive automation measure (task displacement, not just RTI/robots)
-│   b. Continuous ideology outcome (IRT estimates, not binary vote choice)
-│   c. Pseudo-panel spanning 2006-2022 (not single cross-section)
-│   d. Mechanism adjudication (economic insecurity vs cultural backlash)
-│   For each: why it matters, what it enables that prior work couldn't do.
-│
-├── 6. Roadmap (1 paragraph)
-│   [CONTRACTUAL — Shapiro]
-│   Chapter-by-chapter preview using \Cref{ch:...} for all chapters.
-│   Brief, functional, no more than 1 sentence per chapter.
-│
-└── \Cref connections to all subsequent chapters
-```
+1. `rules/skills/avoid-desk-reject/references/fit-and-contribution.md`
+2. `rules/skills/avoid-desk-reject/references/abstract-and-introduction.md`
+3. `rules/skills/avoid-desk-reject/assets/desk-reject-preflight-template.md` only if you need to return a preflight diagnosis
 
----
+Before drafting, answer four questions:
 
-## PHASE 1: RESEARCH (read existing chapters)
+1. What conversation does this paper belong to?
+2. What prior belief should change if the paper is correct?
+3. Can an editor see the contribution from the abstract and first 3 paragraphs?
+4. Is the opening leading with question and contribution rather than sample or method?
 
-Before writing a single word, you MUST read the following files to understand what the introduction needs to reference and not duplicate:
+## Target Structure
 
-### Mandatory Reads
+Use this journal-aware structure:
 
-```
-1. thesis/CLAUDE.md                                → conventions, commands, bib keys
-2. .claude/reference/literature-evidence.md        → concrete findings from 20+ papers (use for Antecedents)
-3. thesis/chapters/02_literature.tex               → what Ch.2 covers (avoid duplication)
-4. thesis/chapters/03_data.tex                     → data sources, sample sizes, match rates
-5. thesis/chapters/04_methodology.tex              → formulas, specifications, identification
-6. thesis/chapters/05_results.tex                  → main coefficients, key tables/figures
-7. thesis/references.bib                           → available citation keys
-8. CLAUDE.md (root)                                → project context, measure pipeline, findings
-```
+1. **Hook** (2-3 paragraphs)
+   - Ground the phenomenon in a concrete tension, puzzle, or high-signal fact
+2. **Research question** (1 paragraph)
+   - State the question plainly and precisely
+3. **Approach and findings** (3-4 paragraphs)
+   - What I do, how I identify, what I find
+4. **Antecedents** (3-4 paragraphs)
+   - Brief map of the relevant literatures; each paragraph should end with what prior work does not do
+5. **Contribution** (3-4 paragraphs)
+   - Why this changes what readers should believe, not just what the paper happens to estimate
+6. **Roadmap** (1 paragraph)
+   - Functional, brief, and last
 
-### What to Extract
+## Phase 1: Research
 
-| Source | Extract for Introduction |
-|--------|------------------------|
-| Ch.3 | Data sources (CCES 2006-2022, ACS, BEA-KLEMS, O*NET), sample size, IRT ideology variable |
-| Ch.4 | Task displacement formula (briefly), 18 demographic groups, pseudo-panel design, TWFE spec |
-| Ch.5 | Main coefficient (β=0.291, p=0.06), lag structure (k=1 strongest), heterogeneous effects |
-| Ch.2 §2.4 | Contribution text to migrate to Ch.1 (shorten §2.4, expand Ch.1 §5) |
-| `references.bib` | Available citation keys — NEVER cite a paper not in the bib file |
+Before writing a single word, read:
 
----
+1. `thesis/CLAUDE.md`
+2. `.claude/reference/literature-evidence.md`
+3. `thesis/chapters/02_literature.tex`
+4. `thesis/chapters/03_data.tex`
+5. `thesis/chapters/04_methodology.tex`
+6. `thesis/chapters/05_results.tex`
+7. `thesis/references.bib`
+8. `CLAUDE.md` at the repo root
 
-## PHASE 1.5: BUILD ARGUMENTATIVE STRUCTURE
+If the introduction is journal-facing, also read:
 
-Before drafting, use the **narrative-architect** agent to design the argumentative flow for the Antecedents and Contribution sections. The agent reads `.claude/reference/literature-evidence.md` and produces paragraph-by-paragraph outlines with specific paper citations.
+9. `rules/skills/avoid-desk-reject/references/fit-and-contribution.md`
+10. `rules/skills/avoid-desk-reject/references/abstract-and-introduction.md`
 
-### How to Use
+Extract:
 
-Dispatch the `narrative-architect` agent with:
-- **Goal**: "Build the Antecedents section of the Introduction: briefly position the thesis in three literatures (task-based framework, economic shocks → politics, mechanisms) and identify what prior work does NOT do."
-- **Target section**: "Chapter 1, §4 (Antecedents)"
-- **Constraints**: "3-4 paragraphs max. Must cite ALM 2003, ADHM 2020, Colantone & Stanig 2018, and Gallego & Kurer 2022. Each paragraph must end with a gap statement."
+- Data sources, sample size, and ideology variable from Ch.3
+- Identification and design summary from Ch.4
+- Headline findings and magnitudes from Ch.5
+- Contribution language currently living in Ch.2 section 2.4
+- Available citation keys from `references.bib`
 
-The architect will return a structured outline. Use it as the backbone for Phase 2 drafting.
+## Phase 1.5: Build the Argument Skeleton
 
-### Argumentative Flow Templates (from literature-evidence.md §7)
+Before drafting, sketch the paragraph logic for:
 
-The evidence base includes pre-built flow templates for:
-- **§7.1**: The Introduction Paradox (automation → rightward, not leftward)
-- **§7.5**: The 4 Contributions structure
+- Hook
+- Question
+- Approach and findings
+- Antecedents
+- Contribution
+- Roadmap
 
-Use these as starting points. The narrative-architect agent refines them into paragraph-level outlines with specific citations.
+For Antecedents and Contribution, prefer a paragraph-level outline before prose. Each Antecedents paragraph should end with a gap statement; each Contribution paragraph should answer why that contribution matters.
 
----
+## Phase 2: Draft
 
-## PHASE 2: DRAFT
+### Writing Rules
 
-### Writing Rules (MANDATORY)
+1. Use first person singular: `I define`, `I estimate`, `I find`.
+2. Use present tense for methodology and findings, past tense for data collection or historical context.
+3. Use `\citet{}` and `\citep{}` correctly; never type "Author (Year)" manually.
+4. Use `\Cref{}` and `\cref{}` liberally because the introduction is a navigation hub.
+5. Cite exact numbers inline; do not round if the exact number is available.
+6. If a number is uncertain, mark it with `% TODO: verify`.
+7. Keep equations minimal.
+8. Hedge responsibly: `consistent with`, `suggesting`, `indicating`.
+9. Every paragraph needs a topic sentence and a transition sentence.
+10. Do not let method or data novelty carry the entire burden of contribution.
 
-1. **Voice**: First person singular. "I define", "I construct", "I estimate", "I find". Never "we" or "the author."
-2. **Tense**: Present tense for methodology ("I define 18 groups"), past tense for data ("The CCES was administered..."), present for findings ("The results indicate...").
-3. **Citations**: `\citet{key}` when author is subject, `\citep{key}` for parenthetical. NEVER write "Author (Year)" manually.
-4. **Cross-references**: `\Cref{ch:data}` at sentence start, `\cref{ch:data}` mid-sentence. Use liberally — the introduction is a navigation hub.
-5. **Numbers**: Cite exact figures inline ("517,736 employed individuals", "83.4\% match rate"). Never round when precise numbers are available.
-6. **No fabrication**: Every coefficient, p-value, and sample size must come from Ch.5 or the analysis outputs. If a number is not in the existing chapters, leave a `% TODO: verify [number]` comment.
-7. **Equations**: At most 1-2 display equations in the introduction (the TD formula and maybe the TWFE spec). Keep them simple; full derivations are in Ch.4.
-8. **Hedging**: "consistent with", "suggesting", "indicating". Never "clearly proves" or "undoubtedly."
-9. **Paragraph structure**: Topic sentence → 2-4 supporting sentences → transition sentence. Every paragraph.
-10. **No em-dashes**: Do NOT use `---` in prose. Use commas, parentheses, colons, or semicolons for asides and elaborations. Match Chapters 3-5 style.
+### Anti-Patterns
 
-### Anti-Patterns (NEVER do these)
+- Opening with generic "In recent years..." setup
+- Hiding the main finding until page 2 or later
+- Letting the abstract describe a topic but not a contribution
+- Writing a literature-map paragraph that is only a list of citations
+- Treating the introduction as a mini methods section
+- Using the roadmap before the reader knows why the paper matters
 
-- Start with "In recent years..." or "Automation has become increasingly important..."
-- Write more than 2 sentences of abstract methodology without grounding in a concrete example
-- Use the word "interesting", "important", or "noteworthy" as filler
-- Write a paragraph that is just a list of citations: "Author1 (Year) found X. Author2 (Year) found Y. Author3 (Year) found Z."
-- Include a subsection structure — the introduction is ONE continuous flow
-- Duplicate the literature review — keep Antecedents to 3-4 paragraphs max
-- Use rhetorical questions (except very sparingly)
-- Write the roadmap paragraph as anything other than the LAST paragraph
-- Reference tables/figures from Ch.5 by number (they might renumber) — use `\Cref{tab:label}`
+### Front-End Gates
 
-### Hook Strategies (choose one)
+Before you accept a draft as good enough, check:
 
-**A. The Paradox Hook**: "Despite decades of rising returns to education and skill-biased technological change favoring cognitive work, the political response to automation has defied economic models: workers facing displacement move *rightward*, not toward the redistributive left."
+- Could the abstract fit a different paper with only minor substitutions?
+- Is the target conversation visible before page 2?
+- Is the contribution stronger than "this has not been studied in this exact setting"?
+- Does the opening justify continued reading even before technical detail appears?
 
-**B. The Fact Hook**: "Between 2006 and 2022, the most automation-exposed demographic groups in the United States experienced a [X]-point rightward shift in ideology..."
+## Phase 3: Style Match
 
-**C. The Event Hook**: Start with a specific moment (2016 election, a factory closure, a policy debate) that crystallizes the tension.
+Re-read substantial stretches of Ch.3-Ch.5 and normalize the introduction to match:
 
-**D. The Literature Gap Hook**: "The China Shock literature established that trade-induced labor market disruption shapes political attitudes. But automation—a structural shock that is slower, broader, and harder to attribute—has received far less systematic attention."
+- first-person singular voice
+- 25-35 word average sentence length
+- topic sentence -> support -> transition paragraph rhythm
+- no filler, no generic intensifiers
+- no hidden roadmap before the paper's value is visible
 
-### Opening Paragraph Template
-
-```latex
-[Hook: 2-3 sentences establishing the phenomenon]
-[Pivot: 1 sentence framing the scholarly question]
-I ask whether workers in occupations more exposed to task-displacing
-automation shift toward conservative political ideology. Using a
-pseudo-panel of [N] demographic groups tracked through the Cooperative
-Congressional Election Study from 2006 to 2022, I find that a
-one-standard-deviation increase in group-level task displacement is
-associated with a [β]-point rightward shift in ideology, a pattern
-consistent with the cultural backlash mechanism proposed by
-\citet{colantone2021backlash} and \citet{manunta2025identity}.
-```
-
----
-
-## PHASE 3: STYLE MATCHING
-
-After drafting, the text must be passed through a **style normalization pass** to match Chapters 3-5. Either:
-
-1. **Self-check**: Re-read 40+ lines each from `03_data.tex`, `04_methodology.tex`, and `05_results.tex`. Compare sentence length, clause complexity, transition patterns. Revise the draft to match.
-2. **Use the style-paraphraser agent**: If the draft feels "AI-generic" or doesn't match the thesis voice, dispatch to the `style-paraphraser` agent.
-
-### Style Checklist
-
-- [ ] Average sentence length 25-35 words (mix short declarative + longer complex)
-- [ ] No em-dashes in prose (use commas, parentheses, colons, semicolons)
-- [ ] Colons before definitions/lists
-- [ ] (i)/(ii)/(iii) for inline enumeration, not bullet points
-- [ ] No "we", no passive where "I" works
-- [ ] Topic sentence opens every paragraph
-- [ ] Transition sentence closes every paragraph
-- [ ] No `\textbf{}` in running prose
-- [ ] Exact numbers, not rounded
-- [ ] `\emph{}` on first use of technical terms
-
----
-
-## PHASE 4: VERIFICATION
+## Phase 4: Verification
 
 ### Compile
 
@@ -219,47 +157,34 @@ After drafting, the text must be passed through a **style normalization pass** t
 cd /Users/alessandro/Projects/Tesi/thesis && tectonic main.tex
 ```
 
-### Check for:
+### Mechanical Checks
 
-- [ ] No compilation errors
-- [ ] No undefined citations (`Undefined citation` warnings)
-- [ ] No undefined references (`Undefined reference` warnings)
-- [ ] All `\Cref` targets exist in Ch.2-5
-- [ ] §2.4 contribution text has been shortened (not duplicated in both Ch.1 and Ch.2)
+- No undefined citations
+- No undefined references
+- All chapter cross-references resolve
+- Contribution language is not duplicated in both Ch.1 and Ch.2
 
 ### Content Verification
 
-- [ ] Research question stated clearly within first 2 paragraphs
-- [ ] Main finding previewed within first 3 paragraphs (Goldin: no mystery novel)
-- [ ] At least 4 forward references to subsequent chapters
-- [ ] Contribution section has 3+ distinct points
+- [ ] Research question appears within the first 2 paragraphs
+- [ ] Main finding appears within the first 3 paragraphs
+- [ ] Why this audience should care is visible from the abstract and opening pages
+- [ ] Contribution is framed as a prior-moving advance, not just a wrinkle or setting
+- [ ] The opening does not make method or sample novelty do all the work
+- [ ] At least 4 forward references point to later chapters
+- [ ] Contribution section contains at least 3 distinct points
 - [ ] Roadmap mentions all 5 subsequent chapters
-- [ ] No number appears without a source (Ch.3-5 or analysis outputs)
-- [ ] Introduction is self-contained (readable without Ch.2-5)
+- [ ] No number appears without a source
+- [ ] Introduction is self-contained
 
----
+### Desk-Reject Preflight
 
-## Coordination with Ch.2 Restructuring
+If the draft is journal-facing, do one final preflight pass:
 
-When this skill is used, Ch.2 §2.4 (Contribution) should be shortened to a brief (1-2 paragraph) summary that says "this thesis contributes in four ways" and then points to Ch.1 for the full articulation. The detailed 150-line contribution section currently in Ch.2 should be migrated to Ch.1 §5.
+- [ ] Would the abstract still identify this paper if the key construct were swapped out?
+- [ ] Would an editor know the target conversation before reaching page 2?
+- [ ] Is the opening strong enough to justify continued reading before method details appear?
 
-After writing Ch.1, update Ch.2's opening paragraph to include a backward reference:
-```latex
-As outlined in \Cref{ch:introduction}, this thesis contributes to
-three literatures. This chapter reviews each in turn.
-```
+## Coordination with Ch.2
 
----
-
-## Example: Real Introduction Openings from Related Papers
-
-### Anelli, Colantone & Stanig (2019) — "We Were The Robots"
-Opens with the economic mechanism: "automation represents a source of structural change in the economy that generates aggregate gains but with winners and losers." Then pivots to political consequences through multiple channels (anti-incumbent, economic nationalism, authoritarian attitudes). Uses specific mechanisms, not generic statements.
-
-### Kurer & Palier (2024) — "The AI Shock and Socio-Political Attitudes"
-Opens with the broader context: "This paper evaluates the role of digital economic shocks in affecting Americans' social, cultural, and political beliefs." Connects to existing literature on economic backlash from outsourcing/trade, then identifies the gap (AI's complementing vs displacing effects). Clear bifurcation hypothesis stated upfront.
-
-### Autor, Dorn, Hanson & Majlesi (2020) — "Importing Political Polarization"
-Opens with the puzzle: import competition from China affected both labor markets AND politics. States the finding in the first paragraph: trade shock moved districts toward more extreme candidates. Methodology follows immediately.
-
-### Pattern: All strong introductions state the finding within the first 3 paragraphs.
+When this skill expands the full contribution in Ch.1, Ch.2 section 2.4 should become a brief backward-pointing summary. The long-form contribution articulation should live in the introduction, not in both chapters.
