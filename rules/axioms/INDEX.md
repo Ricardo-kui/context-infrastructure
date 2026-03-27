@@ -1,8 +1,10 @@
-# Axioms 索引
+﻿# Axioms 索引
 
 > **公理（Axioms）** 是用户的核心认知滤镜——从个人经历中提炼的深层哲学原则。
 > 
 > 不同于 Skills（执行层，"怎么做"），Axioms 是思考层（"为什么"），用于启发深度思考和提供 Alternative 视角。
+>
+> `_from_codex_rules/` 为外部导入参考区，不作为默认个人公理来源。
 
 ---
 
@@ -38,6 +40,28 @@
 - 「验证」「信任」「可靠性」→ V 系列, A04
 - 「优先级」「效率」「瓶颈」→ M03, X03
 - 「上下文」「记忆」「文档」→ A05, T03
+
+---
+
+## P. Professor Core（首批个人公理，12条）
+
+> 说明：以下是基于当前研究身份（战略管理 + 计量实证 + AI 协作）沉淀的第一批个人公理。  
+> 作用：优先用于论文问题定义、识别设计、写作叙事、审稿应对与复现治理。
+
+| ID | 公理 | 核心含义 |
+|----|------|----------|
+| P01 | [问题先于方法](professor/p01_question_first_not_method_first.md) | 方法服务问题，不反客为主 |
+| P02 | [识别先于估计](professor/p02_identification_before_estimation.md) | 因果可信度先于计算复杂度 |
+| P03 | [并行趋势是证据负担](professor/p03_parallel_trends_is_burden_not_decoration.md) | DiD 可信度核心，不是流程装饰 |
+| P04 | [测量是理论选择](professor/p04_measurement_is_theory_in_disguise.md) | 变量口径变化即理论边界变化 |
+| P05 | [统计显著不等于管理学显著](professor/p05_statistical_significance_is_not_managerial_significance.md) | 必须并列解释三层意义 |
+| P06 | [稳健性是主论证](professor/p06_robustness_is_argument_not_appendix.md) | 稳健性用于界定边界，不是堆表 |
+| P07 | [机制需可区分](professor/p07_mechanism_needs_discrimination_not_just_correlation.md) | 机制检验要排除竞争解释 |
+| P08 | [写作是思考模型](professor/p08_writing_is_model_of_thinking.md) | 文本不清通常意味着逻辑未完成 |
+| P09 | [预判审稿优于被动回审](professor/p09_reviewer_forecasting_beats_reviewer_reaction.md) | 投稿前先构建质疑-回应矩阵 |
+| P10 | [可复现性就是可信度](professor/p10_reproducibility_is_credibility.md) | 结果必须可追溯到数据代码参数 |
+| P11 | [AI是判断放大器](professor/p11_ai_is_judgment_amplifier_not_substitute.md) | AI放大判断，不替代判断 |
+| P12 | [显性化偏好本身就是改进](professor/p12_bias_made_explicit_is_improvement.md) | 可见偏好才可反思与修正 |
 
 ---
 
