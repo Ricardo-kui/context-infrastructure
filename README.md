@@ -55,6 +55,8 @@ context-infrastructure/
 │       ├── docs/
 │       │   ├── PRD.md           # 记忆系统设计文档
 │       │   └── KNOWLEDGE_BASE.md # 观察和反思的 SOP
+│       ├── config/
+│       │   └── PROJECT_PORTFOLIO.example.md # 多项目扫描模板
 │       └── src/v0/
 │           ├── observer.py      # 每日观察脚本（写入 OBSERVATIONS.md）
 │           └── reflector.py     # 每周反思脚本（更新 WEEKLY_REFLECTIONS / PREFERENCE_REGISTRY）
@@ -72,7 +74,7 @@ context-infrastructure/
 
 **展示层（可以参考，不能复制）**：[`rules/axioms/`](rules/axioms/) 和 [`rules/skills/`](rules/skills/) 包含了这个系统积累一年的内容。43 条公理是从具体经历中蒸馏出来的，skills 是从真实项目中总结的。这些代表原作者的视角，对你有参考价值，但不能替代你自己积累的认知。
 
-**可复用层（直接用）**：[`rules/SOUL.md`](rules/SOUL.md)、[`rules/USER.md`](rules/USER.md) 是模板，填写即可使用。[`rules/COMMUNICATION.md`](rules/COMMUNICATION.md) 是通用的沟通风格指南，大多数人可以直接采用。[`periodic_jobs/ai_heartbeat/`](periodic_jobs/ai_heartbeat/) 提供了记忆系统的实现代码。需要配置定时任务时，参考 [`docs/CRONTAB.md`](docs/CRONTAB.md)。
+**可复用层（直接用）**：[`rules/SOUL.md`](rules/SOUL.md)、[`rules/USER.md`](rules/USER.md) 是模板，填写即可使用。[`rules/COMMUNICATION.md`](rules/COMMUNICATION.md) 是通用的沟通风格指南，大多数人可以直接采用。[`periodic_jobs/ai_heartbeat/`](periodic_jobs/ai_heartbeat/) 提供了记忆系统的实现代码。若你同时维护多个研究项目，可在本机创建 `periodic_jobs/ai_heartbeat/config/PROJECT_PORTFOLIO.local.md` 作为扫描入口。需要配置定时任务时，参考 [`docs/CRONTAB.md`](docs/CRONTAB.md)。
 
 **不可复用层**：公理的具体内容、skill 背后的具体经验。理解它们的结构和形成方式，然后从你自己的数据中积累。
 

@@ -13,10 +13,16 @@ import os
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
-from opencode_client import OpenCodeClient
+from heartbeat_runtime import (
+    WORKSPACE_ROOT,
+    choose_backend,
+    display_path,
+    default_project_portfolio,
+    parse_project_roots,
+    run_codex_prompt,
+    run_opencode_prompt,
+)
 
-SCRIPT_PATH = Path(__file__).resolve()
-WORKSPACE_ROOT = SCRIPT_PATH.parents[4]
 KNOWLEDGE_BASE = WORKSPACE_ROOT / "periodic_jobs" / "ai_heartbeat" / "docs" / "KNOWLEDGE_BASE.md"
 OBSERVATIONS_PATH = WORKSPACE_ROOT / "contexts" / "memory" / "OBSERVATIONS.md"
 WEEKLY_TEMPLATE_PATH = WORKSPACE_ROOT / "contexts" / "memory" / "reflector_weekly_template.md"
@@ -24,7 +30,7 @@ WEEKLY_REFLECTIONS_PATH = WORKSPACE_ROOT / "contexts" / "memory" / "WEEKLY_REFLE
 PREFERENCE_REGISTRY_PATH = WORKSPACE_ROOT / "contexts" / "memory" / "PREFERENCE_REGISTRY.md"
 PROMOTION_PROTOCOL_PATH = WORKSPACE_ROOT / "contexts" / "memory" / "MEMORY_PROMOTION_PROTOCOL.md"
 
-DEFAULT_MODEL = os.getenv("OPENCODE_MODEL", "antigravity-gemini-3-flash")
+DEFAULT_MODEL = os.getenv("AI_HEARTBEAT_MODEL")
 DEFAULT_PROVIDER = os.getenv("OPENCODE_PROVIDER")
 DEFAULT_AGENT = os.getenv("OPENCODE_AGENT", "OpenCode-Builder")
 
@@ -32,11 +38,13 @@ PROMPT_TEMPLATE = """
 You are running the L2 Reflector stage for the context-infrastructure memory system.
 
 Workspace root: {workspace_root}
+Project portfolio: {project_portfolio_path}
 Week of: {week_of}
 Review window: {start_date} to {end_date}
 
 Read these files before editing anything:
 - {kb_path}
+- {project_portfolio_path}
 - {observations_path}
 - {weekly_template_path}
 - {weekly_reflections_path}
@@ -56,6 +64,7 @@ Required outputs:
    - preserve the evidence trail in {observations_path}
    - only remove obviously temporary duplicate low-signal noise
    - never rewrite the entire file just to clean formatting
+6. Treat the project roots listed in {project_portfolio_path} as the primary external evidence scope when you need to revisit source material.
 
 Focus first on these domains when reviewing the week:
 - review / reviewer response
@@ -116,6 +125,17 @@ def main() -> None:
         help="Agent identity to use",
     )
     parser.add_argument(
+        "--backend",
+        choices=["auto", "codex", "opencode"],
+        default="auto",
+        help="Execution backend to use (default: auto)",
+    )
+    parser.add_argument(
+        "--portfolio",
+        default=str(default_project_portfolio()),
+        help="Path to the monitored project portfolio Markdown file",
+    )
+    parser.add_argument(
         "--force",
         action="store_true",
         help="Run even if WEEKLY_REFLECTIONS.md already has the same week header.",
@@ -128,6 +148,9 @@ def main() -> None:
     model_id = args.model
     provider_id = args.provider
     agent_name = args.agent
+    backend = choose_backend(args.backend)
+    project_portfolio_path = Path(args.portfolio).resolve()
+    monitored_roots = parse_project_roots(project_portfolio_path)
 
     if WEEKLY_REFLECTIONS_PATH.exists() and not args.force:
         content = WEEKLY_REFLECTIONS_PATH.read_text(encoding="utf-8")
@@ -140,36 +163,34 @@ def main() -> None:
 
     print(
         "Triggering L2 Reflector for review window "
-        f"{week_of.isoformat()} -> {end_date.isoformat()} using model: {model_id}..."
+        f"{week_of.isoformat()} -> {end_date.isoformat()} using model: {model_id} "
+        f"via backend: {backend}..."
     )
-    client = OpenCodeClient()
-
-    session_id = client.create_session(f"Heartbeat L2 Reflector - {week_of.isoformat()}")
-    if not session_id:
-        return
 
     prompt = PROMPT_TEMPLATE.format(
         workspace_root=WORKSPACE_ROOT,
+        project_portfolio_path=display_path(project_portfolio_path),
         week_of=week_of.isoformat(),
         start_date=week_of.isoformat(),
         end_date=end_date.isoformat(),
-        kb_path=relative_path(KNOWLEDGE_BASE),
-        observations_path=relative_path(OBSERVATIONS_PATH),
-        weekly_template_path=relative_path(WEEKLY_TEMPLATE_PATH),
-        weekly_reflections_path=relative_path(WEEKLY_REFLECTIONS_PATH),
-        preferences_path=relative_path(PREFERENCE_REGISTRY_PATH),
-        promotion_protocol_path=relative_path(PROMOTION_PROTOCOL_PATH),
+        kb_path=display_path(KNOWLEDGE_BASE),
+        observations_path=display_path(OBSERVATIONS_PATH),
+        weekly_template_path=display_path(WEEKLY_TEMPLATE_PATH),
+        weekly_reflections_path=display_path(WEEKLY_REFLECTIONS_PATH),
+        preferences_path=display_path(PREFERENCE_REGISTRY_PATH),
+        promotion_protocol_path=display_path(PROMOTION_PROTOCOL_PATH),
     )
-    client.send_message(
-        session_id,
-        prompt,
-        model_id=model_id,
-        provider_id=provider_id,
-        agent=agent_name,
-    )
-    print("Waiting for session to complete (sync mode)...")
-    client.wait_for_session_complete(session_id)
-    print(f"Task complete (session {session_id}).")
+    if backend == "codex":
+        run_codex_prompt(prompt, model_id=model_id, add_dirs=monitored_roots)
+    else:
+        run_opencode_prompt(
+            prompt=prompt,
+            session_title=f"Heartbeat L2 Reflector - {week_of.isoformat()}",
+            model_id=model_id,
+            provider_id=provider_id,
+            agent_name=agent_name,
+            delete_after=None,
+        )
 
 
 if __name__ == "__main__":

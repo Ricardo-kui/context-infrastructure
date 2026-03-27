@@ -14,9 +14,12 @@
 
 ## 2. 扫描与过滤规则 (L1 Observer)
 
+- **主扫描范围**: 优先读取 `periodic_jobs/ai_heartbeat/config/PROJECT_PORTFOLIO.local.md` 中列出的项目根目录；`context-infrastructure` 仓库本身主要承担记忆存储与配置作用。
+
 ### 2.1 扫描方法论 (Scan Methodology)
 - **降低依赖 Git**: 本项目根目录的git不包括所有文件，内部包含大量嵌套的独立 Git 仓库。基于 Git 的全局 Diff 往往无法覆盖所有子模块且逻辑碎片化。但是具体的子模块在确定理解git结构的前提下也可以使用git。
 - **推荐工具**: 优先使用系统级的 `find`, `ls` 工具进行扫描。例如：`find . -name "*.md" -type f -mtime -1`。
+- **外部项目引用**: 当观察来自仓库外的真实研究项目时，记录中应使用绝对 Windows 路径，避免把不同项目的同名文件混淆。
 
 ### 2.2 Blog 内容识别
 - **路径**: `contexts/blog/content/`

@@ -2,5 +2,7 @@
 .venv/
 __pycache__/
 *.pyc
+logs/
+periodic_jobs/ai_heartbeat/config/PROJECT_PORTFOLIO.local.md
 tmp_*.txt
 adhoc_jobs/smoke_test_*/

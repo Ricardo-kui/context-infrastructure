@@ -92,22 +92,24 @@ L3 你已经配置好了（Step 1）。L1/L2 需要设置 cron 自动运行。
 
 ### 3b. 配置 OpenCode Server
 
-`periodic_jobs/ai_heartbeat/` 的脚本依赖 OpenCode Server API。
+`periodic_jobs/ai_heartbeat/` 的脚本现在默认可以走 Codex CLI，无需额外的 OpenCode Server。
 
-1. 确认本地 OpenCode Server 运行（或配置连接）
-2. 在环境变量中配置 `OPENCODE_BASE_URL`、`OPENCODE_USERNAME`、`OPENCODE_PASSWORD`
-3. 如有需要，可额外配置 `OPENCODE_MODEL`、`OPENCODE_PROVIDER`、`OPENCODE_AGENT`
-4. 测试连通性：`python3 periodic_jobs/ai_heartbeat/src/v0/observer.py --help`
+1. 确认本机 `codex exec` 可正常工作
+2. 在 `periodic_jobs/ai_heartbeat/config/` 下创建 `PROJECT_PORTFOLIO.local.md`，写入真实研究项目根目录
+3. 使用仓库虚拟环境运行脚本：`.\.venv\Scripts\python.exe periodic_jobs/ai_heartbeat/src/v0/observer.py --help`
+4. 如需强制指定后端，可加 `--backend codex`
 
 ### 3c. 配置 Cron
 
-```bash
-# 每日 8:00 AM 运行 observer（扫描当日变化）
-0 8 * * * cd /path/to/your/workspace && python3 periodic_jobs/ai_heartbeat/src/v0/observer.py >> /tmp/observer.log 2>&1
+Windows 上可直接运行：
 
-# 每周一 9:00 AM 运行 reflector（蒸馏和晋升）
-0 9 * * 1 cd /path/to/your/workspace && python3 periodic_jobs/ai_heartbeat/src/v0/reflector.py >> /tmp/reflector.log 2>&1
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\register_ai_heartbeat_tasks.ps1
 ```
+
+默认会创建：
+- 每日 `21:00` 的 observer
+- 每周日 `21:30` 的 reflector
 
 调整路径和时间为你的实际情况。
 

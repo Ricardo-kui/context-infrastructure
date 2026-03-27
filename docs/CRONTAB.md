@@ -27,16 +27,18 @@ Daily     → Crontab Monitor: 健康审计，发现异常则发告警邮件
 扫描 workspace 文件变动，提取有价值的观察写入 `contexts/memory/OBSERVATIONS.md`。这是三层记忆系统的"输入端"。
 
 - **脚本**：`periodic_jobs/ai_heartbeat/src/v0/observer.py`
-- **依赖**：OpenCode Server API（`OPENCODE_API_URL`）
-- **建议时间**：每日 8:00 AM（在 daily briefing 之后）
+- **多项目配置**：优先读取 `periodic_jobs/ai_heartbeat/config/PROJECT_PORTFOLIO.local.md`
+- **默认后端**：Codex CLI
+- **建议时间**：每日 9:00 PM（覆盖全天研究活动）
 
 ### AI Heartbeat Reflector（每周）
 
 回看一周内的 OBSERVATIONS，写入 `contexts/memory/WEEKLY_REFLECTIONS.md`，更新 `contexts/memory/PREFERENCE_REGISTRY.md`，并在证据足够强时晋升到更高层规则。
 
 - **脚本**：`periodic_jobs/ai_heartbeat/src/v0/reflector.py`
-- **依赖**：OpenCode Server API（`OPENCODE_BASE_URL`、`OPENCODE_USERNAME`、`OPENCODE_PASSWORD`）
-- **建议时间**：每周日 9:00 AM
+- **多项目配置**：优先读取 `periodic_jobs/ai_heartbeat/config/PROJECT_PORTFOLIO.local.md`
+- **默认后端**：Codex CLI
+- **建议时间**：每周日 9:30 PM
 
 ### Crontab Monitor（每日）
 
@@ -79,6 +81,12 @@ Daily     → Crontab Monitor: 健康审计，发现异常则发告警邮件
 
 # AI News Survey 周报 — 每周一 8:00 AM（发布到 Kit 订阅者）
 0 8 * * 1 cd /path/to/your/workspace && /path/to/your/workspace/.venv/bin/python periodic_jobs/ai_heartbeat/src/v0/jobs/ai_news_survey.py --mode weekly --publish-to-kit >> /tmp/ai_news_weekly.log 2>&1
+```
+
+Windows 用户可直接运行：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\tools\register_ai_heartbeat_tasks.ps1
 ```
 
 ---

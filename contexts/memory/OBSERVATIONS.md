@@ -42,6 +42,8 @@ Date: YYYY-MM-DD
 - `Preference candidate:`
 - `Upgrade target: weekly | preference | rule | axiom | skill`
 
+如果观察来自仓库外的真实研究项目根目录，优先使用绝对 Windows 路径，并在必要时附上项目 ID。
+
 ## 如何加载记忆
 
 不要全文加载这个文件（可能很大）。按需检索：
